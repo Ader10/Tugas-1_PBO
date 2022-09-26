@@ -1,210 +1,152 @@
 ﻿using System;
 
-public class Inheritance
+namespace Polimorphism_Overloading
 {
-    public static void Main(String[] args)
+    class Program
     {
+        static void Main(string[] args)
+        {
         menu:
-        Console.WriteLine("Menu Bangun Datar : ");
-        Console.WriteLine("1. Persegi \n2. Lingkaran \n3. Persegi Panjang \n4. Segitiga");
-        Console.WriteLine("Silahkan pilih bangun datar yang ingin dihitung luas dan kelilingnya");
-        string pilih = Console.ReadLine();
-        Console.WriteLine("");
-
-        // membuat objek bangun datar
-        BangunDatar bangunDatar = new BangunDatar();
-
-        // memanggil method luas dan keliling
-        bangunDatar.luas();
-        bangunDatar.keliling();
-
-        if (pilih == "Persegi")
-        {
-            // membuat objek persegi dan mengisi nilai properti
-            Persegi persegi = new Persegi();
-            Console.WriteLine("\nMasukkan sisi persegi = ");
-            persegi.sisi = float.Parse(Console.ReadLine());
-            persegi.luas();
-            persegi.keliling();
-            Console.WriteLine("Apakah anda ingin kembali ke menu?(ya/tidak)");
-            string backmenu = Console.ReadLine();
-            if (backmenu == "ya")
+            Console.WriteLine("Menu Bangun Datar : ");
+            Console.WriteLine("1. Lingkaran");
+            Console.WriteLine("2. Persegi");
+            Console.WriteLine("3. Persegi Panjang");
+            Console.WriteLine("4. Segitiga");
+            Console.Write("Silahkan pilih bangun datar yang ingin dihitung luas dan kelilingnya : ");
+            string input_bangundatar = Console.ReadLine();
+            if(input_bangundatar == "Lingkaran")
             {
-                goto menu;
+                BangunDatar lingkaran = new BangunDatar();
+                Console.Write("Masukan nilai jari-jari = ");
+                double r = double.Parse(Console.ReadLine());
+                lingkaran.luas(r);
+                lingkaran.keliling(r);
+                Console.WriteLine("Apakah anda ingin kembali ke menu?(ya/tidak)");
+                string backmenu = Console.ReadLine();
+                if (backmenu == "ya")
+                {
+                    goto menu;
+                }
+                else if (backmenu == "tidak"){
+                    Console.WriteLine("Program Berakhir");
+                }
+                else
+                {
+                    Console.WriteLine("Program Berakhir");
+                }
             }
-            else if (backmenu == "tidak")
+            else if(input_bangundatar == "Persegi")
             {
-                Console.WriteLine("Program Berakhir");
+                BangunDatar persegi = new BangunDatar();
+                Console.Write("Masukan nilai sisi = ");
+                int s = int.Parse(Console.ReadLine());
+                persegi.luas(s);
+                persegi.keliling(s);
+                Console.WriteLine("Apakah anda ingin kembali ke menu?(ya/tidak)");
+                string backmenu = Console.ReadLine();
+                if (backmenu == "ya")
+                {
+                    goto menu;
+                }
+                else if (backmenu == "tidak")
+                {
+                    Console.WriteLine("Program Berakhir");
+                }
+                else
+                {
+                    Console.WriteLine("Program Berakhir");
+                }
             }
-            else
+            else if (input_bangundatar == "Persegi Panjang")
             {
-                Console.WriteLine("Program Berakhir");
+                BangunDatar persegi_panjang = new BangunDatar();
+                Console.Write("Masukan nilai panjang = ");
+                int p = int.Parse(Console.ReadLine());
+                Console.Write("Masukan nilai l = ");
+                int l = int.Parse(Console.ReadLine());
+                persegi_panjang.luas(p, l);
+                persegi_panjang.keliling(p, l);
+                Console.WriteLine("Apakah anda ingin kembali ke menu?(ya/tidak)");
+                string backmenu = Console.ReadLine();
+                if (backmenu == "ya")
+                {
+                    goto menu;
+                }
+                else if (backmenu == "tidak")
+                {
+                    Console.WriteLine("Program Berakhir");
+                }
+                else
+                {
+                    Console.WriteLine("Program Berakhir");
+                }
             }
-        }
-
-        else if (pilih == "Lingkaran")
-        {
-            // membuat objek Lingkaran dan mengisi nilai properti
-            Lingkaran lingkaran = new Lingkaran();
-            Console.WriteLine("\nMasukkan jari-jari lingkaran = ");
-            lingkaran.r = float.Parse(Console.ReadLine());
-
-            lingkaran.luas();
-            lingkaran.keliling();
-            Console.WriteLine("Apakah anda ingin kembali ke menu?(ya/tidak)");
-            string backmenu = Console.ReadLine();
-            if (backmenu == "ya")
+            else if (input_bangundatar == "Segitiga")
             {
-                goto menu;
-            }
-            else if (backmenu == "tidak")
-            {
-                Console.WriteLine("Program Berakhir");
-            }
-            else
-            {
-                Console.WriteLine("Program Berakhir");
-            }
-        }
-
-        else if (pilih == "Persegi Panjang")
-        {
-            // membuat objek Persegi Panjang dan mengisi nilai properti
-            PersegiPanjang persegiPanjang = new PersegiPanjang();
-            Console.WriteLine("\nMasukkan panjang persegi = ");
-            persegiPanjang.panjang = float.Parse(Console.ReadLine());
-            Console.WriteLine("Masukkan lebar persegi!");
-            persegiPanjang.lebar = float.Parse(Console.ReadLine());
-
-            persegiPanjang.luas();
-            persegiPanjang.keliling();
-            Console.WriteLine("Apakah anda ingin kembali ke menu?(ya/tidak)");
-            string backmenu = Console.ReadLine();
-            if (backmenu == "ya")
-            {
-                goto menu;
-            }
-            else if (backmenu == "tidak")
-            {
-                Console.WriteLine("Program Berakhir");
-            }
-            else
-            {
-                Console.WriteLine("Program Berakhir");
-            }
-        }
-
-        else if (pilih == "Segitiga")
-        {
-            // membuat objek Segitiga dan mengisi nilai properti
-            Segitiga mSegitiga = new Segitiga();
-            Console.WriteLine("\nMasukkan alas segitiga = ");
-            mSegitiga.alas = float.Parse(Console.ReadLine());
-            Console.WriteLine("Masukkan tinggi segitiga = ");
-            mSegitiga.tinggi = float.Parse(Console.ReadLine());
-
-            mSegitiga.luas();
-            mSegitiga.keliling();
-            Console.WriteLine("Apakah anda ingin kembali ke menu?(ya/tidak)");
-            string backmenu = Console.ReadLine();
-            if (backmenu == "ya")
-            {
-                goto menu;
-            }
-            else if (backmenu == "tidak")
-            {
-                Console.WriteLine("Program Berakhir");
+                BangunDatar segitiga = new BangunDatar();
+                Console.Write("Masukan nilai alas = ");
+                double a = double.Parse(Console.ReadLine());
+                Console.Write("Masukan nilai tinggi = ");
+                double t = double.Parse(Console.ReadLine());
+                segitiga.luas(a, t);
+                segitiga.keliling(a, t);
+                Console.WriteLine("Apakah anda ingin kembali ke menu?(ya/tidak)");
+                string backmenu = Console.ReadLine();
+                if (backmenu == "ya")
+                {
+                    goto menu;
+                }
+                else if (backmenu == "tidak")
+                {
+                    Console.WriteLine("Program Berakhir");
+                }
+                else
+                {
+                    Console.WriteLine("Program Berakhir");
+                }
             }
             else
             {
-                Console.WriteLine("Program Berakhir");
+                Console.WriteLine("Menu yang anda pilih tidak tersedia");
+                goto menu;
             }
         }
-
-        else
+    }
+    public class BangunDatar
+    {
+        public double phi = 3.14;
+        public void luas(double r)
         {
-            Console.WriteLine("Pilihan tidak ada di dalam Menu");
+            Console.WriteLine("Luas lingkaran = " + phi * r * r);
+        }
+        public void luas(int s)
+        {
+            Console.WriteLine("Luas persegi = " + s*s);
+        }
+        public void luas(int p, int l)
+        {
+            Console.WriteLine("Luas persegi panjang = " + p * l);
+        }
+        public void luas(double a, double t)
+        {
+            Console.WriteLine("Luas segitiga = " + 0.5 * a * t);
+        }
+        public void keliling(double r)
+        {
+            Console.WriteLine("Keliling lingkaran = " + 2*phi*r);
+        }
+        public void keliling(int s)
+        {
+            Console.WriteLine("Keliling persegi = " + 4*s);
+        }
+        public void keliling(int p, int l)
+        {
+            Console.WriteLine("Keliling persegi panjang = " + 2 * (p+l));
+        }
+        public void keliling(double a, double t)
+        {
+            double phytagoras = (a * a) + (t * t);
+            Console.WriteLine("Keliling segitiga = " + 3*a);
         }
     }
 }
-
-class BangunDatar
-{
-    public virtual float luas()
-    {
-        Console.WriteLine("Menghitung luas bangun datar");
-        return 0;
-    }
-    public virtual float keliling()
-    {
-        Console.WriteLine("Menghitung keliling bangun datar");
-        return 0;
-    }
-
-}
-
-class Persegi : BangunDatar
-{
-    public float sisi;
-    public override float luas()
-    {
-        float luas = sisi * sisi;
-        Console.WriteLine("Luas Persegi: " + luas);
-        return luas;
-    }
-    public override float keliling()
-    {
-        float keliling = 4 * sisi;
-        Console.WriteLine("Keliling Persegi: " + keliling);
-        return keliling;
-    }
-}
-
-class Lingkaran : BangunDatar
-{
-    // jari-jari lingkaran
-    public float r;
-    public override float luas()
-    {
-        float luas = (float)(Math.PI * r * r);
-        Console.WriteLine("Luas lingkaran: " + luas);
-        return luas;
-    }
-    public override float keliling()
-    {
-        float keliling = (float)(2 * Math.PI * r);
-        Console.WriteLine("Keliling Lingkaran: " + keliling);
-        return keliling;
-    }
-}
-
-class PersegiPanjang : BangunDatar
-{
-    public float panjang;
-    public float lebar;
-    public override float luas()
-    {
-        float luas = panjang * lebar;
-        Console.WriteLine("Luas Persegi Panjang:" + luas);
-        return luas;
-    }
-    public override float keliling()
-    {
-        float kll = 2 * panjang + 2 * lebar;
-        Console.WriteLine("Keliling Persegi Panjang: " + kll);
-        return kll;
-    }
-}
-
-class Segitiga : BangunDatar
-{
-    public float alas;
-    public float tinggi;
-    public override float luas()
-    {
-        float luas = 1 / 2 * (alas * tinggi);
-        Console.WriteLine("Luas Segitiga: " + luas);
-        return luas;
-    }
-}
-
